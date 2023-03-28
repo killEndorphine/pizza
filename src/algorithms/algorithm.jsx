@@ -442,3 +442,32 @@ useEffect(() => {
 }, [activeIndex, selected, searchValue, currentPage])
 
 <Pagination onChangePage={(number) => setCurrentPage(number)} />
+
+// 22 context
+export const SearchContext = React.createContext('')
+
+const App = () => {
+  const [searchValue, setSearchValue] = useState('')
+  return (
+    <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+      <Header />
+      <Home />
+      <Footer />
+    </SearchContext.Provider>
+  )
+}
+
+import { SearchContext } from '../App'
+
+const Home = () => {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext)
+  return <div onClick={(e) => setSearchValue(e.target.value)}>{searchValue}</div>
+}
+
+import { SearchContext } from '../App'
+
+const Header = () => {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext)
+  return <div onClick={(e) => setSearchValue(e.target.value)}>{searchValue}</div>
+}
+

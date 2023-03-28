@@ -5,8 +5,10 @@ import Sort from '../components/Sort'
 import PizzaItem from '../components/PizzaItem'
 import PizzaSkeleton from '../components/PizzaSkeleton'
 import Pagination from '../components/Pagination/Pagination'
+import { SearchContext } from '../App'
 
-const Home = ({ searchValue }) => {
+const Home = () => {
+  const { searchValue } = React.useContext(SearchContext)
   let [items, setItems] = useState([])
   const [selected, setSelected] = useState({
     name: 'популярности(по убыванию)',
