@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+
 import Categories from '../components/Categories'
 import Sort from '../components/Sort'
 import PizzaItem from '../components/PizzaItem'
 import PizzaSkeleton from '../components/PizzaSkeleton'
+import Pagination from '../components/Pagination/Pagination'
 
 const Home = ({ searchValue }) => {
   let [items, setItems] = useState([])
@@ -12,6 +14,7 @@ const Home = ({ searchValue }) => {
   })
   const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
   const [isLoading, setIsLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -21,7 +24,7 @@ const Home = ({ searchValue }) => {
 
     setIsLoading(true)
     fetch(
-      `https://63735446348e947299093a2b.mockapi.io/items?${category}${search}&sortBy=${sortBy}&order=${order}`
+      `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
     )
       .then((res) => res.json())
       .then((arr) => {
@@ -29,7 +32,7 @@ const Home = ({ searchValue }) => {
         setIsLoading(false)
       })
     window.scrollTo(0, 0) // перевести вверх окно
-  }, [activeIndex, selected, searchValue])
+  }, [activeIndex, selected, searchValue, currentPage])
 
   return (
     <main className="main">
@@ -43,9 +46,10 @@ const Home = ({ searchValue }) => {
         </h1>
         <div className="pizza-items">
           {isLoading
-            ? [...new Array(8)].map((_, index) => <PizzaSkeleton key={index} />)
+            ? [...new Array(4)].map((_, index) => <PizzaSkeleton key={index} />)
             : items.map((obj) => <PizzaItem key={obj.id} {...obj} />)}
         </div>
+        <Pagination onChangePage={(number) => setCurrentPage(number)} />
       </section>
     </main>
   )

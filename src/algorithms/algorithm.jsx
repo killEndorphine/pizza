@@ -372,3 +372,73 @@ useEffect(() => {
     })
   window.scrollTo(0, 0) // перевести вверх окно
 }, [activeIndex, selected, searchValue])
+
+// 19 scss pagination
+.root {
+  display: flex;
+  li {
+    background-color: rgb(136, 136, 136);
+    list-style-type: none;
+    margin: 3px;
+    border: 1px solid black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+    }
+    &:active {
+      opacity: 0.5;
+    }
+  }
+  :global {
+    .selected { // если класс создает библиотека а модули не дают на прямую к ним обратиться - этот способ подойдет!
+      background-color: black;
+    }
+  }
+}
+
+// 20 pagination
+import ReactPaginate from 'react-paginate'
+import style from './Pagination.module.scss'
+
+const Pagination = ({ onChangePage }) => {
+  return (
+    <ReactPaginate
+      className={style.root}
+      breakLabel=""
+      nextLabel=">"
+      onPageChange={(e) => onChangePage(e.selected + 1)}
+      pageRangeDisplayed={4}
+      pageCount={3}
+      previousLabel="<"
+      renderOnZeroPageCount={null}
+    />
+  )
+}
+
+export default Pagination
+
+// 21 new fetch
+const [currentPage, setCurrentPage] = useState(1)
+
+useEffect(() => {
+  const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
+  const sortBy = selected.sortProperty.replace('-', '')
+  const category = activeIndex > 0 ? `category=${activeIndex}` : ''
+  const search = searchValue ? `search=${searchValue}` : ''
+
+  setIsLoading(true)
+  fetch(
+    `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+  )
+    .then((res) => res.json())
+    .then((arr) => {
+      setItems(arr)
+      setIsLoading(false)
+    })
+  window.scrollTo(0, 0) // перевести вверх окно
+}, [activeIndex, selected, searchValue, currentPage])
+
+<Pagination onChangePage={(number) => setCurrentPage(number)} />
