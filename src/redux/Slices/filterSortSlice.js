@@ -7,16 +7,19 @@ const initialState = {
     sortProperty: 'rating',
   },
 }
-const filterSlice = createSlice({
-  name: 'filter',
+const filterSortSlice = createSlice({
+  name: 'filterSort',
   initialState,
   reducers: {
     setActiveIndex(state, action) {
       state.activeIndex = action.payload
     },
+    setSelected(state, action) {
+      state.selected = action.payload
+    },
   },
 })
 
-export const { setActiveIndex } = filterSlice.actions
+export const { setActiveIndex, setSelected } = filterSortSlice.actions
 
-export default filterSlice.reducer
+export default filterSortSlice.reducer

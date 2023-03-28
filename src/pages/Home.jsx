@@ -8,26 +8,33 @@ import Pagination from '../components/Pagination/Pagination'
 
 import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveIndex } from '../redux/Slices/filterSlice'
+import { setActiveIndex, setSelected } from '../redux/Slices/filterSortSlice'
 
 const Home = () => {
   const { searchValue } = React.useContext(SearchContext)
   let [items, setItems] = useState([])
-  const [selected, setSelected] = useState({
-    name: 'популярности(по убыванию)',
-    sortProperty: 'rating',
-  })
+  // const [selected, setSelected] = useState({
+  //   name: 'популярности(по убыванию)',
+  //   sortProperty: 'rating',
+  // })
   // const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
   const [isLoading, setIsLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
 
-  const activeIndex = useSelector((state) => state.filterSlice.activeIndex)
+  // const activeIndex = useSelector((state) => state.filterSortSlice.activeIndex)
+  // const selected = useSelector((state) => state.filterSortSlice.selected)
+  const filterSortSlice = useSelector((state) => state.filterSortSlice) // так компактнее вроде...
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
-    const sortBy = selected.sortProperty.replace('-', '')
-    const category = activeIndex > 0 ? `category=${activeIndex}` : ''
+    const order = filterSortSlice.selected.sortProperty.includes('-')
+      ? 'asc'
+      : 'desc'
+    const sortBy = filterSortSlice.selected.sortProperty.replace('-', '')
+    const category =
+      filterSortSlice.activeIndex > 0
+        ? `category=${filterSortSlice.activeIndex}`
+        : ''
     const search = searchValue ? `search=${searchValue}` : ''
 
     setIsLoading(true)
@@ -40,17 +47,32 @@ const Home = () => {
         setIsLoading(false)
       })
     window.scrollTo(0, 0) // перевести вверх окно
-  }, [activeIndex, selected, searchValue, currentPage])
+  }, [
+    filterSortSlice.activeIndex,
+    filterSortSlice.selected,
+    searchValue,
+    currentPage,
+  ])
 
   const setCategoryId = (id) => {
     dispatch(setActiveIndex(id))
   }
 
+  const setSortSelected = (obj) => {
+    dispatch(setSelected(obj))
+  }
+
   return (
     <main className="main">
       <div className="sort">
-        <Categories activeIndex={activeIndex} setActiveIndex={setCategoryId} />
-        <Sort selected={selected} setSelected={setSelected} />
+        <Categories
+          activeIndex={filterSortSlice.activeIndex}
+          setActiveIndex={setCategoryId}
+        />
+        <Sort
+          selected={filterSortSlice.selected}
+          setSelected={setSortSelected}
+        />
       </div>
       <section className="section">
         <h1 style={{ marginBottom: '25px', textTransform: 'uppercase' }}>

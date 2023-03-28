@@ -491,7 +491,7 @@ root.render(
   </Provider>
 )
 
-//24 slice
+//24 slice 1.0
 import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   activeIndex: 0,
@@ -514,10 +514,57 @@ export default filterSlice.reducer
 
 //25 Dispatch
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveIndex } from '../redux/Slices/filterSlice'
+import { setActiveIndex } from '../redux/Slices/filterSortSlice'
 const activeIndex = useSelector((state) => state.filterSlice.activeIndex)
 const dispatch = useDispatch()
 const setCategoryId = (id) => {
   dispatch(setActiveIndex(id))
 }
 <Categories activeIndex={activeIndex} setActiveIndex={setCategoryId} />
+
+//26 slice 2.0
+import { createSlice } from '@reduxjs/toolkit'
+const initialState = {
+  activeIndex: 0,
+  selected: {
+    name: 'популярности(по убыванию)',
+    sortProperty: 'rating',
+  },
+}
+const filterSortSlice = createSlice({
+  name: 'filterSort',
+  initialState,
+  reducers: {
+    setActiveIndex(state, action) {
+      state.activeIndex = action.payload
+    },
+    setSelected(state, action) {
+      state.selected = action.payload
+    },
+  },
+})
+export const { setActiveIndex, setSelected } = filterSortSlice.actions
+export default filterSortSlice.reducer
+
+//27 Dispatch 2.0
+import { useDispatch, useSelector } from 'react-redux'
+import { setActiveIndex, setSelected } from '../redux/Slices/filterSortSlice'
+const filterSortSlice = useSelector((state) => state.filterSortSlice)
+const dispatch = useDispatch()
+
+const setCategoryId = (id) => {
+  dispatch(setActiveIndex(id))
+}
+
+const setSortSelected = (obj) => {
+  dispatch(setSelected(obj))
+}
+// ну и в useEffect поменялись зависимости от filterSortSlice
+<Categories
+  activeIndex={filterSortSlice.activeIndex}
+  setActiveIndex={setCategoryId}
+/>
+<Sort
+  selected={filterSortSlice.selected}
+  setSelected={setSortSelected}
+/>
