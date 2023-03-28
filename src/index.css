@@ -116,10 +116,13 @@ body {
   text-decoration: none;
 }
 
+.main-main-sort {
+  position: relative;
+}
+
 .main-sort {
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .main-sort-popup {
@@ -128,51 +131,8 @@ body {
   border: 1px solid black;
   padding: 10px;
   position: absolute;
-  right: 60px;
-  top: 165px;
+  right: 20%;
   background-color: white;
-}
-
-@media (max-width: 950px) {
-  .main-sort-popup {
-    right: 35%;
-    top: 195px;
-  }
-}
-
-@media (max-width: 645px) {
-  .main-sort-popup {
-    right: 27%;
-    top: 230px;
-  }
-}
-
-@media (max-width: 540px) {
-  .main-sort-popup {
-    right: 27%;
-    top: 390px;
-  }
-}
-
-@media (max-width: 457px) {
-  .main-sort-popup {
-    right: 27%;
-    top: 410px;
-  }
-}
-
-@media (max-width: 457px) {
-  .main-sort-popup {
-    right: 27%;
-    top: 440px;
-  }
-}
-
-@media (max-width: 295px) {
-  .main-sort-popup {
-    right: 27%;
-    top: 490px;
-  }
 }
 
 .main-sort-popup li {

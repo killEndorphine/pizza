@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const Sort = ({ selected, setSelected }) => {
   const [open, setOpen] = useState(false)
   //const [selected, setSelected] = useState(0)
+  const sortRef = useRef()
 
   //const list = ['популярности', 'цене', 'алфавиту']
   const list = [
@@ -19,8 +20,22 @@ const Sort = ({ selected, setSelected }) => {
     setOpen(!open)
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      let path = event.path || (event.composedPath && event.composedPath())
+      if (!path.includes(sortRef.current)) {
+        setOpen(false)
+      }
+    }
+    document.body.addEventListener('click', handleClickOutside)
+    return () => {
+      //Unmount прошел
+      document.body.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+
   return (
-    <>
+    <div ref={sortRef} className="main-main-sort">
       <div className="main-sort">
         <svg
           className="sort-label"
@@ -56,7 +71,7 @@ const Sort = ({ selected, setSelected }) => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   )
 }
 

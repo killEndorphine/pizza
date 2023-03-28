@@ -20,18 +20,8 @@ import axios from 'axios'
 
 const Home = () => {
   const { searchValue } = React.useContext(SearchContext)
-  //let [items, setItems] = useState([])
-  // const [selected, setSelected] = useState({
-  //   name: 'популярности(по убыванию)',
-  //   sortProperty: 'rating',
-  // })
-  // const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
-  //const [isLoading, setIsLoading] = useState(false)
-  //const [currentPage, setCurrentPage] = useState(1)
 
-  // const activeIndex = useSelector((state) => state.filterSortSlice.activeIndex)
-  // const selected = useSelector((state) => state.filterSortSlice.selected)
-  const homeSlice = useSelector((state) => state.homeSlice) // так компактнее вроде...
+  const homeSlice = useSelector((state) => state.homeSlice)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -42,14 +32,6 @@ const Home = () => {
     const search = searchValue ? `search=${searchValue}` : ''
 
     dispatch(setIsLoading(true))
-    // fetch(
-    //   `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
-    // )
-    //   .then((res) => res.json())
-    //   .then((arr) => {
-    //     setItems(arr)
-    //     setIsLoading(false)
-    //   })
     axios
       .get(
         `https://63735446348e947299093a2b.mockapi.io/items?page=${homeSlice.currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`

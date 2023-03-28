@@ -591,3 +591,20 @@ const onClickClear = () => {
 <input ref={inputRef} />
 
 <svg onClick={onClickClear}></svg>
+
+//30 закрытие попапа через любое место в приложении + удаление эвента после unmount
+const Sort = ({ selected, setSelected }) => {}
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    let path = event.path || (event.composedPath && event.composedPath())
+    if (!path.includes(sortRef.current)) {
+      setOpen(false)
+    }
+  }
+  document.body.addEventListener('click', handleClickOutside)
+  return () => {
+    //Unmount прошел
+    document.body.removeEventListener('click', handleClickOutside)
+  }
+}, [])
