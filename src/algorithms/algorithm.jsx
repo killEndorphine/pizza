@@ -613,5 +613,171 @@ const Sort = ({ selected, setSelected }) => {
   }
 }
 
-//31
+//31 addItem
 
+const initialState = {
+  total: 0,
+  items: [],
+  totalPrice: 0,
+}
+addItem(state, action) {
+  const findItem = state.items.find((obj) => obj.id === action.payload.id)
+  if (findItem) {
+    findItem.count++
+  } else {
+    state.items.push({ ...action.payload, count: 1 })
+  }
+  state.totalPrice = state.items.reduce((sum, obj) => {
+    return obj.price * obj.count + sum
+  }, 0)
+  state.total = state.items.reduce((sum, obj) => {
+    return obj.count + sum
+  }, 0)
+}
+
+const PizzaItem = ({ id, name, price, url, sizes, type }) => {
+  const dispatch = useDispatch()
+  const cartItem = useSelector((state) =>
+    state.cartSlice.items.find((obj) => obj.id === id)
+  )
+  const onClickAdd = () => {
+    const item = {
+      id,
+      name,
+      price,
+      url,
+      type: typeNames[activeIndex1],
+      size: sizes[activeIndex2],
+    }
+    dispatch(addItem(item))
+  }
+  const addedCount = cartItem ? cartItem.count : 0
+  return (
+    {addedCount > 0 && (
+      <i className="pizza-item-add-total">{addedCount}</i>
+    )}
+    <button onClick={onClickAdd} className="pizza-item-add" href="#"></button>
+  )
+}
+
+function Header() {
+  const { total, totalPrice } = useSelector((state) => state.cartSlice)
+  return (
+    <span className="basket-total-price">{totalPrice} p</span>
+    <span className="basket-total">{total}</span>
+  )
+}
+
+const CartItem = ({ id, name, price, count, url, type, size }) => {
+  const dispatch = useDispatch() 
+  const onClickPlus = () => {
+    dispatch(
+      addItem({
+        id,
+      })
+    )
+  }
+  return (
+    <button onClick={onClickPlus} className="cart-item-operation-button">+</button>
+  )
+}
+
+// 32 minusItem
+minusItem(state, action) {
+  const findItem = state.items.find((obj) => obj.id === action.payload)
+  if (findItem.count > 1) {
+    findItem.count--
+  } else {
+    state.items = state.items.filter((obj) => obj !== findItem)
+  }
+  state.totalPrice = state.items.reduce((sum, obj) => {
+    return obj.price * obj.count + sum
+  }, 0)
+  state.total = state.items.reduce((sum, obj) => {
+    return obj.count + sum
+  }, 0)
+}
+
+const CartItem = ({ id, name, price, count, url, type, size }) => {
+  const dispatch = useDispatch()
+  const onClickMinus = () => {
+    dispatch(minusItem(id))
+  }
+  return (
+    <button onClick={onClickMinus} className="cart-item-operation-button">-</button>
+  )
+}
+
+//33 removeItem
+removeItem(state, action) {
+  state.items = state.items.filter((obj) => obj.id !== action.payload)
+  state.totalPrice = state.items.reduce((sum, obj) => {
+    return obj.price * obj.count + sum
+  }, 0)
+  state.total = state.items.reduce((sum, obj) => {
+    return obj.count + sum
+  }, 0)
+}
+
+const CartItem = ({ id, name, price, count, url, type, size }) => {
+  const dispatch = useDispatch()
+  const onClickRemove = () => {
+    if (window.confirm('Ты правда хочешь удалить питсу?')) {
+      dispatch(removeItem(id))
+    }
+  }
+  return (
+    <button onClick={onClickRemove} className="cart-item-delete">
+      x
+    </button>
+  )
+}
+
+//34 clearItems
+clearItems(state) {
+  state.items = []
+  state.totalPrice = 0
+  state.total = 0
+}
+
+const Cart = () => {
+  const { totalPrice, items, total } = useSelector((state) => state.cartSlice)
+  const dispatch = useDispatch()
+  const onClickClear = () => {
+    if (window.confirm('Очистить корзину?')) {
+      dispatch(clearItems())
+    }
+  }
+  return (
+    <div onClick={onClickClear} className="cart-clear">Очистить корзину</div>
+  )
+}
+
+//35 EmptyCart
+const Cart = () => {
+  const { totalPrice, items, total } = useSelector((state) => state.cartSlice)
+  if (!totalPrice) {
+    return <EmptyCart />
+  }
+  return (
+    <div>...</div>
+  )
+}
+
+//36 try catch async await
+try {
+  dispatch(setIsLoading(true))
+  const call = async () => {
+    const res = await axios.get(
+      `https://63735446348e947299093a2b.mockapi.io/items?page=${homeSlice.currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+    )
+    dispatch(setItems(res.data))
+    dispatch(setIsLoading(false))
+  }
+  call()
+} catch (error) {
+  console.log(error)
+  dispatch(setIsLoading(false))
+} finally {
+  dispatch(setIsLoading(false))
+}

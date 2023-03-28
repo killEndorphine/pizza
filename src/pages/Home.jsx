@@ -31,15 +31,22 @@ const Home = () => {
       homeSlice.activeIndex > 0 ? `category=${homeSlice.activeIndex}` : ''
     const search = searchValue ? `search=${searchValue}` : ''
 
-    dispatch(setIsLoading(true))
-    axios
-      .get(
-        `https://63735446348e947299093a2b.mockapi.io/items?page=${homeSlice.currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
-      )
-      .then((res) => {
+    try {
+      dispatch(setIsLoading(true))
+      const call = async () => {
+        const res = await axios.get(
+          `https://63735446348e947299093a2b.mockapi.io/items?page=${homeSlice.currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+        )
         dispatch(setItems(res.data))
         dispatch(setIsLoading(false))
-      })
+      }
+      call()
+    } catch (error) {
+      console.log(error)
+      dispatch(setIsLoading(false))
+    } finally {
+      dispatch(setIsLoading(false))
+    }
 
     window.scrollTo(0, 0) // перевести вверх окно
   }, [

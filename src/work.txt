@@ -317,6 +317,12 @@ state.items = state.items.filter((obj) => obj !== findItem)
 241) делаем условную отрисовку - 35 алгоритм
 242) если тоталпайс ноль - рисуем пустую корзину или ту которая содержит товары
 
+243) async await try catch
+244) на аксиос вешаем авэйт а фцию в которой он лежит делаем асинк
+245) мы превратили асинхронный код в синхронный!
+246) засовываем все в трай кеч файнали
+247) Теперь у нас при ошибке приложение не крашнется!
+248) см алгоритм 36
 
 
 
@@ -325,9 +331,6 @@ state.items = state.items.filter((obj) => obj !== findItem)
 
 
 
+https://www.youtube.com/watch?v=azf3uk4zOew&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=18
 
-
-
-https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
-
-time: 1:11:51
+time: 0:35:00

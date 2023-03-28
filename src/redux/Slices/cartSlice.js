@@ -23,7 +23,6 @@ const cartSlice = createSlice({
         return obj.count + sum
       }, 0)
     },
-
     minusItem(state, action) {
       const findItem = state.items.find((obj) => obj.id === action.payload)
       if (findItem.count > 1) {
