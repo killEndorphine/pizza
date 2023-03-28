@@ -143,3 +143,17 @@ const Sort = () => {
     </>
   )
 }
+
+// 5 fetch запросы
+function App() {
+  let [items, setItems] = useState([])
+
+  useEffect(() => {
+    // способ получения тренировочный!
+    fetch('https://63735446348e947299093a2b.mockapi.io/items')
+      .then((res) => res.json())
+      .then((arr) => setItems(arr))
+  }, [])
+
+  return <div>{items.map((item) => {})}</div>
+}
