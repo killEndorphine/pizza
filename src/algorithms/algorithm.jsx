@@ -934,3 +934,6 @@ const MainLayout = () => {
     </div>
   )
 }
+
+//42 Typescript part 1
+//см папку тайпскрипт

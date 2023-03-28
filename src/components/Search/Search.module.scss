@@ -1,0 +1,45 @@
+.root {
+  position: relative;
+  left: -70px;
+
+  &__input {
+    padding: 8px 15px;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-size: 16px;
+    padding-left: 40px;
+    width: 350px;
+    &:focus {
+      border: 1px solid white;
+    }
+    @media (max-width: 1125px) {
+      width: 250px;
+    }
+    @media (max-width: 1033px) {
+      margin-left: 25px;
+    }
+    @media (max-width: 440px) {
+      width: 150px;
+    }
+  }
+  &__icon {
+    width: 22px;
+    height: 22px;
+    opacity: 0.3;
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    @media (max-width: 1033px) {
+      top: 9px;
+      left: 25px;
+    }
+  }
+  &__close {
+    width: 22px;
+    height: 22px;
+    opacity: 0.3;
+    position: absolute;
+    top: 9px;
+    right: 5px;
+  }
+}

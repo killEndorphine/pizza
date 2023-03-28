@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from './PizzaPage.module.scss'
 import { useParams } from 'react-router-dom'
 import { fetchItem, pizzaSliceSelector } from '../../redux/Slices/pizzaSlice'

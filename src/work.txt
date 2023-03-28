@@ -357,9 +357,10 @@ state.items = state.items.filter((obj) => obj !== findItem)
 
 274) layouts - см алгоритм 41 - там изи! мы вынесли роутеры и зарефакторили
 
+275) Typescript
+276) Typescript ушел в новую папку с алгоритмами typePartOne
 
 
+https://www.youtube.com/watch?v=cFkSoZVzngo&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=25
 
-https://www.youtube.com/watch?v=06bh14iY3dA&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=20
-
-time: 0:39:51
+time: 1:43:11

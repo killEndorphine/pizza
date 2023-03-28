@@ -45,19 +45,19 @@ const homeSlice = createSlice({
       state.searchValue = action.payload
     },
   },
-  extraReducers: {
-    [fetchItems.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(fetchItems.pending, (state, action) => {
       state.status = 'loading'
       state.items = []
-    },
-    [fetchItems.fulfilled]: (state, action) => {
+    })
+    builder.addCase(fetchItems.fulfilled, (state, action) => {
       state.items = action.payload
       state.status = 'succes'
-    },
-    [fetchItems.rejected]: (state) => {
+    })
+    builder.addCase(fetchItems.rejected, (state, action) => {
       state.status = 'error'
       state.items = []
-    },
+    })
   },
 })
 

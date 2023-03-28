@@ -25,9 +25,10 @@ body {
   padding: 5px;
 }
 
-@media (max-width: 447px) {
+@media (max-width: 733px) {
   .header {
     flex-direction: column;
+    justify-content: center;
   }
 }
 

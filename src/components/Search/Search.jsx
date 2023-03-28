@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Search.module.css'
+import style from './Search.module.scss'
 import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { homeSliceSelector, setSearchValue } from '../../redux/Slices/homeSlice'
@@ -21,7 +21,7 @@ const Search = () => {
   return (
     <div className={style.root}>
       <svg
-        className={style.icon}
+        className={style.root__icon}
         enableBackground="new 0 0 32 32"
         id="Glyph"
         version="1.1"
@@ -38,12 +38,12 @@ const Search = () => {
         value={searchValue}
         onChange={onChangeValue}
         placeholder="Поиск питсов..."
-        className={style.input}
+        className={style.root__input}
       />
       {searchValue && (
         <svg
           onClick={onClickClear}
-          className={style.close}
+          className={style.root__close}
           height="512px"
           id="Layer_1"
           style={{ enableBackground: 'new 0 0 512 512' }}
