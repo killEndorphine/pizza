@@ -9,7 +9,7 @@ const Categories = () => {
         {arr.map((item, index) => (
           <li
             key={index}
-            className={activeIndex == index ? 'li-main li-active' : 'li-main'}
+            className={activeIndex === index ? 'li-main li-active' : 'li-main'}
             onClick={() => setActiveIndex(index)}
           >
             {item}

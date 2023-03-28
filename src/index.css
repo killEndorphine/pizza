@@ -14,6 +14,7 @@ body {
   margin: 0 auto;
   border: 1px solid black;
   padding: 20px;
+  position: relative;
 }
 
 .header {
@@ -92,7 +93,27 @@ body {
 }
 
 .main-sort-popup {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+  position: absolute;
+  right: 25px;
+  top: 190px;
+  background-color: white;
+}
+
+.main-sort-popup li {
+  list-style-type: none;
+  padding: 3px;
+  cursor: pointer;
+  border: 1px solid black;
+  margin-bottom: 3px;
+}
+
+.active-popup {
+  background-color: black;
+  color: white;
 }
 
 .pizza-items {
