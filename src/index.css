@@ -91,11 +91,13 @@ body {
 
 .pizza-items {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .pizza-item {
-  width: 25%;
+  width: 24%;
   margin: 1px;
+  margin-bottom: 40px;
 }
 
 .pizza-img {

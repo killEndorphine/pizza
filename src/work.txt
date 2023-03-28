@@ -9,8 +9,15 @@ Prettier code Formatter +
 5) верстаем каркас +
 6) доливаем в него изображения +
 7) наносим минимальные стили +
-
+8) разбиваем на компоненты
+а) Header
+b) Categories
+c) Sort
+d) Popup
+e) PizzaItem
+f) Ставим много пицца итемов и wrap иж делаем(чтобы вниз итемы прыгали)
+9)
 
 https://www.youtube.com/watch?v=HAMGGnF7en4&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=3
 
-time: 15:53
+time: 56:00
