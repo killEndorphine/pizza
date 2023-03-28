@@ -74,6 +74,12 @@ body {
   border: 1px solid black;
   padding: 10px;
   border-radius: 15px;
+  cursor: pointer;
+}
+
+.li-active {
+  background-color: black;
+  color: white;
 }
 
 .li-main-anchor {
@@ -125,6 +131,11 @@ body {
 .pizza-option-two {
   display: flex;
   padding: 5px;
+}
+
+.pizza-option-active {
+  color: white;
+  background-color: black;
 }
 
 .pizza-option-one li {

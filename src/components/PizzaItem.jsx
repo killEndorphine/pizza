@@ -14,11 +14,11 @@ const PizzaItem = ({ title, price }) => {
       <h4 className="pizza-title">{title}</h4>
       <div className="pizza-options-top">
         <ul className="pizza-option-one">
-          <li className="active">Тонкое</li>
+          <li className="pizza-option-active">Тонкое</li>
           <li>Традиционное</li>
         </ul>
         <ul className="pizza-option-two">
-          <li className="active">26 см.</li>
+          <li className="pizza-option-active">26 см.</li>
           <li>30 см.</li>
           <li>40 см.</li>
         </ul>

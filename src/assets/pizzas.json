@@ -1,0 +1,72 @@
+[
+  {
+    "id": 0,
+    "name": "Пепперони с сыром",
+    "type": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 803,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 1,
+    "name": "Мексиканская",
+    "type": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 1200,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 2,
+    "name": "4 сыра",
+    "type": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 700,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Диабло",
+    "type": [0, 1],
+    "sizes": [30, 40],
+    "price": 600,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Агусто закрытая",
+    "type": [0],
+    "sizes": [26, 30, 40],
+    "price": 470,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Пепперони",
+    "type": [0, 1],
+    "sizes": [26, 30],
+    "price": 403,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Московская",
+    "type": [1],
+    "sizes": [26, 30, 40],
+    "price": 500,
+    "category": 0,
+    "rating": 4,
+    "url": "https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+  }
+]

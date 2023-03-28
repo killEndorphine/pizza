@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Categories = () => {
+  const arr = ['Все', 'Мясные', 'Вегитарианские', 'Гриль', 'Закрытые']
+  const [activeIndex, setActiveIndex] = useState(0)
   return (
     <nav className="nav-main">
       <ul className="ul-main">
-        <li className="li-main">Все</li>
-        <li className="li-main">Мясные</li>
-        <li className="li-main">Вегитарианские</li>
-        <li className="li-main">Гриль</li>
-        <li className="li-main">Закрытые</li>
+        {arr.map((item, index) => (
+          <li
+            key={index}
+            className={activeIndex == index ? 'li-main li-active' : 'li-main'}
+            onClick={() => setActiveIndex(index)}
+          >
+            {item}
+          </li>
+        ))}
       </ul>
     </nav>
   )
