@@ -867,3 +867,15 @@ const Home = () => {
     </main>
   )
 }
+
+//38 алгоритм 
+export const homeSliceSelector = (state) => state.homeSlice
+
+const Home = () => {
+  const { searchValue, selected, activeIndex, currentPage, items, status } =
+    useSelector(homeSliceSelector)
+    const dispatch = useDispatch()
+    return (
+      <div>...</div>
+  )
+}

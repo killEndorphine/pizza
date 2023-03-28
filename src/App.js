@@ -4,24 +4,19 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import NotFound from './pages/NotFound/NotFound'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import EmptyCart from './pages/EmptyCart/EmptyCart'
 
 //import pizzas from './assets/pizzas.json'
-export const SearchContext = React.createContext('')
 
 function App() {
-  const [searchValue, setSearchValue] = useState('')
   return (
     <BrowserRouter>
       <div className="App">
-        <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </SearchContext.Provider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
       </div>
     </BrowserRouter>
   )

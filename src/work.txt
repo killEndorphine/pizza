@@ -338,6 +338,10 @@ state.items = state.items.filter((obj) => obj !== findItem)
 260) на основании этого рисуется или стр с еррор или скелетоны или страница с полученными данными
 
 261) selector
+262) searchValue перенесли в хоумслайс - прокинули назад в сеарч и хоум
+263) удалили контекст
+264) все вызовы внутри useSelector переносим в редакс и делаем их как функции __Selector и прокидываем там
+где до этого вызывали - мы упростили код этим и избавились от DRY
 
 
 
@@ -345,8 +349,6 @@ state.items = state.items.filter((obj) => obj !== findItem)
 
 
 
+https://www.youtube.com/watch?v=4mCR72ug1SE&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=19
 
-
-https://www.youtube.com/watch?v=azf3uk4zOew&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=18
-
-time: 1:33:32
+time: 0:45:19

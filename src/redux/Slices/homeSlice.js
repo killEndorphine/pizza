@@ -13,13 +13,13 @@ export const fetchItems = createAsyncThunk(
 )
 
 const initialState = {
+  searchValue: '',
   activeIndex: 0,
   selected: {
     name: 'популярности(по убыванию)',
     sortProperty: 'rating',
   },
   items: [],
-  isLoading: false,
   currentPage: 1,
   status: 'loading',
 }
@@ -34,14 +34,15 @@ const homeSlice = createSlice({
     setSelected(state, action) {
       state.selected = action.payload
     },
-    setItems(state, action) {
-      state.items = action.payload
-    },
+
     setIsLoading(state, action) {
       state.isLoading = action.payload
     },
     setCurrentPage(state, action) {
       state.currentPage = action.payload
+    },
+    setSearchValue(state, action) {
+      state.searchValue = action.payload
     },
   },
   extraReducers: {
@@ -60,12 +61,14 @@ const homeSlice = createSlice({
   },
 })
 
+export const homeSliceSelector = (state) => state.homeSlice
+
 export const {
   setActiveIndex,
   setSelected,
-  setItems,
   setIsLoading,
   setCurrentPage,
+  setSearchValue,
 } = homeSlice.actions
 
 export default homeSlice.reducer

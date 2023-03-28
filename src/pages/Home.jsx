@@ -7,21 +7,18 @@ import PizzaSkeleton from '../components/PizzaSkeleton'
 import Pagination from '../components/Pagination/Pagination'
 import ErrorPage from './Error/ErrorPage'
 
-import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   setActiveIndex,
   setSelected,
   fetchItems,
   setCurrentPage,
+  homeSliceSelector,
 } from '../redux/Slices/homeSlice'
 
 const Home = () => {
-  const { searchValue } = React.useContext(SearchContext)
-
-  const { selected, activeIndex, currentPage, items, status } = useSelector(
-    (state) => state.homeSlice
-  )
+  const { searchValue, selected, activeIndex, currentPage, items, status } =
+    useSelector(homeSliceSelector)
   const dispatch = useDispatch()
 
   useEffect(() => {

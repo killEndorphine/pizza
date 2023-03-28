@@ -1,14 +1,16 @@
 import React from 'react'
 import style from './Search.module.css'
-import { SearchContext } from '../../App'
 import { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { homeSliceSelector, setSearchValue } from '../../redux/Slices/homeSlice'
 
 const Search = () => {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext)
   const inputRef = useRef()
+  const { searchValue } = useSelector(homeSliceSelector)
+  const dispatch = useDispatch()
 
   const onClickClear = () => {
-    setSearchValue('')
+    dispatch(setSearchValue(''))
     inputRef.current.focus()
   }
 
@@ -30,7 +32,7 @@ const Search = () => {
       <input
         ref={inputRef}
         value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={(e) => dispatch(setSearchValue(e.target.value))}
         placeholder="Поиск питсов..."
         className={style.input}
       />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addItem } from '../redux/Slices/cartSlice'
+import { addItem, findItemCartSliceSelector } from '../redux/Slices/cartSlice'
 
 const PizzaItem = ({ id, name, price, url, sizes, type }) => {
   const [activeIndex1, setActiveIndex1] = useState(0)
@@ -8,9 +8,7 @@ const PizzaItem = ({ id, name, price, url, sizes, type }) => {
   const typeNames = ['Тонкое', 'Традиционное']
 
   const dispatch = useDispatch()
-  const cartItem = useSelector((state) =>
-    state.cartSlice.items.find((obj) => obj.id === id)
-  )
+  const cartItem = useSelector(findItemCartSliceSelector(id))
 
   const addedCount = cartItem ? cartItem.count : 0
 
