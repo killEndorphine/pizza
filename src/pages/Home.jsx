@@ -4,7 +4,7 @@ import Sort from '../components/Sort'
 import PizzaItem from '../components/PizzaItem'
 import PizzaSkeleton from '../components/PizzaSkeleton'
 
-const Home = () => {
+const Home = ({ searchValue }) => {
   let [items, setItems] = useState([])
   const [selected, setSelected] = useState({
     name: 'популярности(по убыванию)',
@@ -17,10 +17,11 @@ const Home = () => {
     const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
     const sortBy = selected.sortProperty.replace('-', '')
     const category = activeIndex > 0 ? `category=${activeIndex}` : ''
+    const search = searchValue ? `search=${searchValue}` : ''
 
     setIsLoading(true)
     fetch(
-      `https://63735446348e947299093a2b.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
+      `https://63735446348e947299093a2b.mockapi.io/items?${category}${search}&sortBy=${sortBy}&order=${order}`
     )
       .then((res) => res.json())
       .then((arr) => {
@@ -28,7 +29,7 @@ const Home = () => {
         setIsLoading(false)
       })
     window.scrollTo(0, 0) // перевести вверх окно
-  }, [activeIndex, selected])
+  }, [activeIndex, selected, searchValue])
 
   return (
     <main className="main">

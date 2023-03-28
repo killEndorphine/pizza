@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Search from './Search/Search'
 
-function Header() {
+function Header({ searchValue, setSearchValue }) {
   return (
     <header className="header">
       <div className="logo">
@@ -30,11 +31,13 @@ function Header() {
             </g>
           </svg>
         </Link>
+
         <div className="logo-label">
           <h1 className="logo-name">max meder development</h1>
           <p className="logo-discription">Самая вкусная пицца во вселенной</p>
         </div>
       </div>
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <div className="basket">
         <Link className="basket-anchor" to="/cart">
           <span className="basket-total-price">530p</span>
