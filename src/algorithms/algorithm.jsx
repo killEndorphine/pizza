@@ -781,3 +781,89 @@ try {
 } finally {
   dispatch(setIsLoading(false))
 }
+
+// 37 createAsyncThunk
+export const fetchItems = createAsyncThunk(
+  'filterSort/fetchItemsStatus',
+  async (params) => {
+    const { order, sortBy, category, search, current } = params
+    const { data } = await axios.get(
+      `https://63735446348e947299093a2b.mockapi.io/items?page=${current}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+    )
+    return data
+  }
+)
+
+extraReducers: {
+  [fetchItems.pending]: (state) => {
+    state.status = 'loading'
+    state.items = []
+  },
+  [fetchItems.fulfilled]: (state, action) => {
+    state.items = action.payload
+    state.status = 'succes'
+  },
+  [fetchItems.rejected]: (state) => {
+    state.status = 'error'
+    state.items = []
+  },
+},
+
+const Home = () => {
+  const { searchValue } = React.useContext(SearchContext)
+
+  const { selected, activeIndex, currentPage, items, status } = useSelector(
+    (state) => state.homeSlice
+  )
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
+    const sortBy = selected.sortProperty.replace('-', '')
+    const category = activeIndex > 0 ? `category=${activeIndex}` : ''
+    const search = searchValue ? `search=${searchValue}` : ''
+    const current = currentPage
+    dispatch(
+      fetchItems({
+        order,
+        sortBy,
+        category,
+        search,
+        current,
+      })
+    )
+  }, [activeIndex, selected, searchValue, currentPage]) 
+
+  return (
+    <main className="main">
+      {status === 'error' ? (
+        <ErrorPage />
+      ) : (
+        <>
+          <div className="sort">
+            <Categories
+              activeIndex={activeIndex}
+              setActiveIndex={setCategoryId}
+            />
+            <Sort selected={selected} setSelected={setSortSelected} />
+          </div>
+          <section className="section">
+            <h1 style={{ marginBottom: '25px', textTransform: 'uppercase' }}>
+              Все пиццы
+            </h1>
+            <div className="pizza-items">
+              {status === 'loading'
+                ? [...new Array(4)].map((_, index) => (
+                    <PizzaSkeleton key={index} />
+                  ))
+                : items.map((obj) => <PizzaItem key={obj.id} {...obj} />)}
+            </div>
+            <Pagination
+              onChangePage={(number) => dispatch(setCurrentPage(number))}
+            />
+          </section>
+        </>
+      )}
+    </main>
+  )
+}
