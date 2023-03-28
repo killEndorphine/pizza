@@ -249,3 +249,85 @@ function App() {
     // или какое другое св-во меняется
   }
 }
+
+//12 изменение способа сортировки
+const [selected, setSelected] = useState({
+  name: 'популярности',
+  sortProperty: 'rating',
+})
+
+<Sort selected={selected} setSelected={setSelected} />
+
+const list = [
+  { name: 'популярности', sortProperty: 'rating' },
+  { name: 'цене', sortProperty: 'price' },
+  { name: 'алфавиту', sortProperty: 'name' },
+]
+
+<span style={{ cursor: 'pointer' }} onClick={() => setOpen(!open)}>
+  {selected.name}
+</span>
+
+{list.map((type, i) => (
+  <li
+    onClick={() => onClickListItem(type)}
+    key={i}
+    className={
+      selected.sortProperty === type.sortProperty
+        ? 'active-popup'
+        : ''
+    }
+  >
+    {type.name}
+  </li>
+))}
+
+//13 new fetch
+useEffect(() => {
+  setIsLoading(true)
+  fetch(
+    `https://63735446348e947299093a2b.mockapi.io/items?${
+      activeIndex > 0 ? `category=${activeIndex}` : ''
+    }&sortBy=${selected.sortProperty}&order=desc`
+  )
+    .then((res) => res.json())
+    .then((arr) => {
+      setItems(arr)
+      setIsLoading(false)
+    })
+  window.scrollTo(0, 0) // перевести вверх окно
+}, [activeIndex, selected])
+
+//14 изменение сортировки 2.0
+const list = [
+  { name: 'популярности(по убыванию)', sortProperty: 'rating' },
+  { name: 'популярности(по возрастанию)', sortProperty: '-rating' },
+  { name: 'цене(по убыванию)', sortProperty: 'price' },
+  { name: 'цене(по возрастанию)', sortProperty: '-price' },
+  { name: 'алфавиту(по убыванию)', sortProperty: 'name' },
+  { name: 'алфавиту(по возрастанию)', sortProperty: '-name' },
+]
+
+//15 fetch 2.0
+const [selected, setSelected] = useState({
+  name: 'популярности(по убыванию)',
+  sortProperty: 'rating',
+})
+const [activeIndex, setActiveIndex] = useState(0)
+
+useEffect(() => {
+  const order = selected.sortProperty.includes('-') ? 'asc' : 'desc' //убывание возрастание
+  const sortBy = selected.sortProperty.replace('-', '') // sort
+  const category = activeIndex > 0 ? `category=${activeIndex}` : '' //filter
+
+  setIsLoading(true)
+  fetch(
+    `https://63735446348e947299093a2b.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`
+  )
+    .then((res) => res.json())
+    .then((arr) => {
+      setItems(arr)
+      setIsLoading(false)
+    })
+  window.scrollTo(0, 0) // перевести вверх окно
+}, [activeIndex, selected])

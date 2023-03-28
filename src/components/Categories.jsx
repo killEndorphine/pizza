@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-const Categories = () => {
+const Categories = ({ activeIndex, setActiveIndex }) => {
   const arr = ['Все', 'Мясные', 'Вегитарианские', 'Гриль', 'Закрытые']
-  const [activeIndex, setActiveIndex] = useState(0)
+  //const [activeIndex, setActiveIndex] = useState(0)
   return (
     <nav className="nav-main">
       <ul className="ul-main">
