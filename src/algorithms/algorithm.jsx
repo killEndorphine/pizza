@@ -230,8 +230,8 @@ function App() {
   )
 }
 
-// <Link to="/">Ссылка на Home</Link>
-// <Link to="/card">Ссылка на Card</Link>
+<Link to="/">Ссылка на Home</Link>
+<Link to="/card">Ссылка на Card</Link>
 
 // 11 adaptation css + grid
 .pizza-items {
@@ -593,18 +593,25 @@ const onClickClear = () => {
 <svg onClick={onClickClear}></svg>
 
 //30 закрытие попапа через любое место в приложении + удаление эвента после unmount
-const Sort = ({ selected, setSelected }) => {}
-
-useEffect(() => {
-  const handleClickOutside = (event) => {
-    let path = event.path || (event.composedPath && event.composedPath())
-    if (!path.includes(sortRef.current)) {
-      setOpen(false)
+const Sort = ({ selected, setSelected }) => {
+  const sortRef = useRef()
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      let path = event.path || (event.composedPath && event.composedPath())
+      if (!path.includes(sortRef.current)) {
+        setOpen(false)
+      }
     }
+    document.body.addEventListener('click', handleClickOutside)
+    return () => {
+      //Unmount прошел
+      document.body.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+  return {
+    <div ref={sortRef} className="main-main-sort">...</div>
   }
-  document.body.addEventListener('click', handleClickOutside)
-  return () => {
-    //Unmount прошел
-    document.body.removeEventListener('click', handleClickOutside)
-  }
-}, [])
+}
+
+//31
+

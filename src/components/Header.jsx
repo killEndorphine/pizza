@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Search from './Search/Search'
+import { useSelector } from 'react-redux'
 
 function Header() {
+  const { total, totalPrice } = useSelector((state) => state.cartSlice)
+
   return (
     <header className="header">
       <div className="logo">
@@ -40,7 +43,7 @@ function Header() {
       <Search />
       <div className="basket">
         <Link className="basket-anchor" to="/cart">
-          <span className="basket-total-price">530p</span>
+          <span className="basket-total-price">{totalPrice} p</span>
           <div className="delimiter"></div>
           <svg
             className="basket-svg"
@@ -57,7 +60,7 @@ function Header() {
               <path d="M158.08,165.49a15,15,0,0,1-14.23-10.26L118.14,78H70.7a15,15,0,1,1,0-30H129a15,15,0,0,1,14.23,10.26l29.13,87.49a15,15,0,0,1-14.23,19.74Z" />
             </g>
           </svg>
-          <span className="basket-total">3</span>
+          <span className="basket-total">{total}</span>
         </Link>
       </div>
     </header>

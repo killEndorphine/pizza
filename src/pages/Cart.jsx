@@ -1,7 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CartItem from '../components/CartItem'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearItems } from '../redux/Slices/cartSlice'
 
 const Cart = () => {
+  const { totalPrice, items, total } = useSelector((state) => state.cartSlice)
+
+  const dispatch = useDispatch()
+
+  const onClickClear = () => {
+    if (window.confirm('Очистить корзину?')) {
+      dispatch(clearItems())
+    }
+  }
+
   return (
     <div className="cart">
       <div className="cart-header">
@@ -43,7 +56,7 @@ const Cart = () => {
           </svg>
           <p className="cart-logo-name">Корзина</p>
         </div>
-        <div className="cart-clear">
+        <div onClick={onClickClear} className="cart-clear">
           <svg
             width="45px"
             viewBox="0 0 512 512"
@@ -63,67 +76,10 @@ const Cart = () => {
         </div>
       </div>
       <hr className="hr" />
-
       <div className="cart-items">
-        <div className="cart-item">
-          <img
-            alt="питса"
-            className="cart-item-img"
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-          />
-          <div className="cart-item-info">
-            <h3 className="cart-item-name">Сырный цыпленок</h3>
-            <p className="cart-item-discription">тонкое тесто, 26 см</p>
-          </div>
-          <div className="cart-item-operation">
-            <button className="cart-item-operation-button">-</button>
-            <span className="cart-item-operation-total">2</span>
-            <button className="cart-item-operation-button">+</button>
-          </div>
-          <div className="cart-item-total-price">770 Р</div>
-          <button className="cart-item-delete">x</button>
-        </div>
-        <hr className="hr" />
-
-        <div className="cart-item">
-          <img
-            alt="питса"
-            className="cart-item-img"
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-          />
-          <div className="cart-item-info">
-            <h3 className="cart-item-name">Сырный цыпленок</h3>
-            <p className="cart-item-discription">тонкое тесто, 26 см</p>
-          </div>
-          <div className="cart-item-operation">
-            <button className="cart-item-operation-button">-</button>
-            <span className="cart-item-operation-total">2</span>
-            <button className="cart-item-operation-button">+</button>
-          </div>
-          <div className="cart-item-total-price">770 Р</div>
-          <button className="cart-item-delete">x</button>
-        </div>
-        <hr className="hr" />
-
-        <div className="cart-item">
-          <img
-            alt="питса"
-            className="cart-item-img"
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-          />
-          <div className="cart-item-info">
-            <h3 className="cart-item-name">Сырный цыпленок</h3>
-            <p className="cart-item-discription">тонкое тесто, 26 см</p>
-          </div>
-          <div className="cart-item-operation">
-            <button className="cart-item-operation-button">-</button>
-            <span className="cart-item-operation-total">2</span>
-            <button className="cart-item-operation-button">+</button>
-          </div>
-          <div className="cart-item-total-price">770 Р</div>
-          <button className="cart-item-delete">x</button>
-        </div>
-        <hr className="hr" />
+        {items.map((item, index) => (
+          <CartItem key={item.id} {...item} />
+        ))}
       </div>
       <div className="cart-footer">
         <div className="cart-footer-total">
@@ -137,7 +93,9 @@ const Cart = () => {
             >
               Всего пицц:
             </p>
-            <span style={{ fontSize: '25px', fontWeight: 'bold' }}>3 шт.</span>
+            <span style={{ fontSize: '25px', fontWeight: 'bold' }}>
+              {total} шт.
+            </span>
           </div>
           <div className="cart-footer-total-div">
             <p
@@ -149,7 +107,9 @@ const Cart = () => {
             >
               Сумма заказа:
             </p>
-            <span style={{ fontSize: '25px', fontWeight: 'bold' }}>900 Р</span>
+            <span style={{ fontSize: '25px', fontWeight: 'bold' }}>
+              {totalPrice} Р
+            </span>
           </div>
         </div>
         <div className="cart-footer-buttons">
