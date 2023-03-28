@@ -911,3 +911,26 @@ const PizzaPage = () => {
     <div>...</div>
   )
 }
+
+//41 outlet
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="items/:id" element={<PizzaPage />} />
+      </Route>
+    </Routes>
+  )
+}
+
+const MainLayout = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Outlet />
+    </div>
+  )
+}

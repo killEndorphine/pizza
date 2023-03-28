@@ -355,6 +355,9 @@ state.items = state.items.filter((obj) => obj !== findItem)
 272) в этом компоненте(питсапэйдж) через useParams вытаскивается id и его передаем в редакс на запрос
 273) пока идет запрос - мы видим скелетон!
 
+274) layouts - см алгоритм 41 - там изи! мы вынесли роутеры и зарефакторили
+
+
 
 
 https://www.youtube.com/watch?v=06bh14iY3dA&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=20
