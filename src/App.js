@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
 import Home from './pages/Home'
-import Card from './pages/Card'
+import Cart from './pages/Cart'
 import NotFound from './pages/NotFound/NotFound'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/card" element={<Card />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </BrowserRouter>

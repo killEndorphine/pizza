@@ -305,3 +305,153 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* Cart  */
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 100px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-item-img {
+  display: block;
+  width: 150px;
+  margin-right: 25px;
+  margin-left: 30px;
+}
+
+.cart-item-name {
+  font-size: 26px;
+}
+
+.cart-item-discription {
+  font-size: 20px;
+  color: rgb(180, 177, 177);
+}
+
+.cart-item-info {
+  margin-right: 120px;
+}
+
+.cart-item-operation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+.cart-item-operation-button {
+  padding: 1px 10px;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+}
+
+.cart-item-operation-total {
+  font-size: 30px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.cart-item-total-price {
+  font-size: 30px;
+  padding: 10px;
+  margin-right: 50px;
+}
+
+.cart-item-delete {
+  padding: 10px 30px;
+  color: white;
+  background-color: black;
+  font-size: 20px;
+}
+
+.hr {
+  margin-bottom: 20px;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.cart-logo {
+  display: flex;
+  align-items: center;
+}
+
+.cart-logo-svg {
+  margin-right: 10px;
+}
+
+.cart-clear {
+  display: flex;
+  align-items: center;
+}
+
+.cart-logo-name {
+  font-size: 30px;
+}
+
+.cart-clear-button {
+  color: gray;
+}
+
+.cart-footer-total {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+.cart-footer-total-div {
+  display: flex;
+}
+
+.cart-footer-buttons {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+
+.button-return {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 5px;
+  padding-right: 20px;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}
+
+.button-pay {
+  padding: 20px;
+  font-size: 17px;
+}

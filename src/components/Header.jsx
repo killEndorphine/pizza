@@ -36,7 +36,7 @@ function Header() {
         </div>
       </div>
       <div className="basket">
-        <Link className="basket-anchor" to="/card">
+        <Link className="basket-anchor" to="/cart">
           <span className="basket-total-price">530p</span>
           <div className="delimiter"></div>
           <svg
