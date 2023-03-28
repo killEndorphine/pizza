@@ -5,6 +5,8 @@ import Sort from './components/Sort'
 import Popup from './components/Popup'
 import PizzaItem from './components/PizzaItem'
 
+import pizzas from './assets/pizzas.json'
+
 function App() {
   return (
     <div className="App">
@@ -20,14 +22,9 @@ function App() {
             Все пиццы
           </h1>
           <div className="pizza-items">
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
-            <PizzaItem title="Мексиканская" price={500} />
+            {pizzas.map((obj, index) => (
+              <PizzaItem key={index} {...obj} /> // спред оператор
+            ))}
           </div>
         </section>
       </main>

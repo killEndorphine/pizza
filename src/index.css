@@ -136,6 +136,11 @@ body {
 .pizza-option-active {
   color: white;
   background-color: black;
+  cursor: pointer;
+}
+
+.pizza-option-inactive {
+  cursor: pointer;
 }
 
 .pizza-option-one li {

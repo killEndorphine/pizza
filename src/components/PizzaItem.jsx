@@ -1,26 +1,45 @@
 import React, { useState } from 'react'
 
-const PizzaItem = ({ title, price }) => {
+const PizzaItem = ({ name, price, url, sizes, type }) => {
   const [count, setCount] = useState(0)
-  //let arr = ['20см','26см','30см']
+  const [activeIndex1, setActiveIndex1] = useState(0)
+  const [activeIndex2, setActiveIndex2] = useState(0)
+  const typeNames = ['Тонкое', 'Традиционное']
+
   return (
     <div className="pizza-item">
-      <img
-        width="300px"
-        src="https://avatars.mds.yandex.net/i?id=23733cb67648800c9be2781dfe3422d1a0524393-5222242-images-thumbs&n=13&exp=1"
-        className="pizza-img"
-        alt="pizza"
-      />
-      <h4 className="pizza-title">{title}</h4>
+      <img width="300px" src={url} className="pizza-img" alt="pizza" />
+      <h4 className="pizza-title">{name}</h4>
       <div className="pizza-options-top">
         <ul className="pizza-option-one">
-          <li className="pizza-option-active">Тонкое</li>
-          <li>Традиционное</li>
+          {type.map((type, index) => (
+            <li
+              key={index}
+              onClick={() => setActiveIndex1(index)}
+              className={
+                activeIndex1 === index
+                  ? 'pizza-option-active'
+                  : 'pizza-option-inactive'
+              }
+            >
+              {typeNames[type]}
+            </li>
+          ))}
         </ul>
         <ul className="pizza-option-two">
-          <li className="pizza-option-active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {sizes.map((size, index) => (
+            <li
+              onClick={() => setActiveIndex2(index)}
+              key={index}
+              className={
+                activeIndex2 === index
+                  ? 'pizza-option-active'
+                  : 'pizza-option-inactive'
+              }
+            >
+              {size} см
+            </li>
+          ))}
         </ul>
       </div>
       <div className="pizza-option-bottom">
