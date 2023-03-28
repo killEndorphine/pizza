@@ -1,0 +1,15 @@
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfoundbutton {
+  padding: 5px;
+  color: white;
+  background-color: black;
+  margin-top: 15px;
+  font-size: 25px;
+  cursor: pointer;
+}

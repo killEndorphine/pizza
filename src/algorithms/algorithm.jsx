@@ -195,3 +195,42 @@ useEffect(() => {
     ? [...new Array(8)].map((_, index) => <PizzaSkeleton key={index} />)
     : items.map((obj) => <PizzaItem key={obj.key} {...obj} />)
 }
+
+// 9 css module
+import styles from '../NotFound/notFound.module.css'
+
+const NotFound = () => {
+  return (
+    <div className={styles.notfound}>
+      <NotFoundBlock />
+      <button className={styles.notfoundbutton}>Вернуться</button>
+    </div>
+  )
+}
+// .notfound {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// 10 routers - * если ни 1 из адресов не совпал - то будет редирект на *
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/card" element={<Card />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  )
+}
+
+// <Link to="/">Ссылка на Home</Link>
+// <Link to="/card">Ссылка на Card</Link>
+
+// 11
