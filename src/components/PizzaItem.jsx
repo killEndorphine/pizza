@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const PizzaItem = ({ title, price }) => {
+  const [count, setCount] = useState(0)
+  //let arr = ['20см','26см','30см']
   return (
     <div className="pizza-item">
       <img
@@ -23,7 +25,11 @@ const PizzaItem = ({ title, price }) => {
       </div>
       <div className="pizza-option-bottom">
         <span className="pizza-price">от {price} р</span>
-        <a className="pizza-item-add" href="#">
+        <button
+          onClick={() => setCount(count + 1)}
+          className="pizza-item-add"
+          href="#"
+        >
           <svg
             height="25px"
             version="1.1"
@@ -56,8 +62,8 @@ const PizzaItem = ({ title, price }) => {
             </g>
           </svg>
           <span className="pizza-item-add-button">Добавить</span>
-          <i className="pizza-item-add-total">2</i>
-        </a>
+          <i className="pizza-item-add-total">{count}</i>
+        </button>
       </div>
     </div>
   )
