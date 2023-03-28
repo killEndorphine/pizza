@@ -1,0 +1,16 @@
+1) ставим Node +
+2) Vs-code + 
+3) Create-react-app + 
+4) Prettier и его настройка: + 
+Ctrl shift P - open user settings + 
+Prettier + 
+Editor: Default Formatter + 
+Prettier code Formatter + 
+5) верстаем каркас +
+6) доливаем в него изображения +
+7) наносим минимальные стили +
+
+
+https://www.youtube.com/watch?v=HAMGGnF7en4&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=3
+
+time: 15:53

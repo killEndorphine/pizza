@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-name {
+  text-transform: uppercase;
+}
+
+.logo-img {
+  margin-right: 15px;
+}
+
+.basket-anchor {
+  border: 1px solid black;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.basket-total-price {
+  margin-right: 5px;
+}
+
+.basket-svg {
+  margin-right: 5px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.ul-main {
+  display: flex;
+}
+
+.li-main {
+  margin-right: 40px;
+  list-style-type: none;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.li-main-anchor {
+  text-decoration: none;
+}
+
+.main-sort {
+  display: flex;
+  align-items: center;
+}
+
+.main-sort-popup {
+  display: none;
+}
+
+.pizza-items {
+  display: flex;
+}
+
+.pizza-item {
+  width: 25%;
+  margin: 1px;
+}
+
+.pizza-img {
+  width: 100%;
+}
+
+.pizza-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.pizza-options-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  margin: 3px;
+}
+
+.pizza-option-one {
+  display: flex;
+  padding: 5px;
+}
+
+.pizza-option-two {
+  display: flex;
+  padding: 5px;
+}
+
+.pizza-option-one li {
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.pizza-option-two li {
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.pizza-option-bottom {
+  display: flex;
+  align-items: center;
+  margin: 3px;
+  justify-content: space-between;
+}
+
+.pizza-item-add {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  justify-content: space-around;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.pizza-item-add-button {
+  margin: 0 5px;
+}
+
+.pizza-item-add-total {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
