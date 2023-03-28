@@ -14,6 +14,10 @@ const Search = () => {
     inputRef.current.focus()
   }
 
+  const onChangeValue = (e) => {
+    dispatch(setSearchValue(e.target.value))
+  }
+
   return (
     <div className={style.root}>
       <svg
@@ -32,7 +36,7 @@ const Search = () => {
       <input
         ref={inputRef}
         value={searchValue}
-        onChange={(e) => dispatch(setSearchValue(e.target.value))}
+        onChange={onChangeValue}
         placeholder="Поиск питсов..."
         className={style.input}
       />

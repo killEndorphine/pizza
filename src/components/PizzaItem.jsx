@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, findItemCartSliceSelector } from '../redux/Slices/cartSlice'
+import { Link } from 'react-router-dom'
 
 const PizzaItem = ({ id, name, price, url, sizes, type }) => {
   const [activeIndex1, setActiveIndex1] = useState(0)
@@ -27,7 +28,9 @@ const PizzaItem = ({ id, name, price, url, sizes, type }) => {
   return (
     <div className="pizza-item-flex">
       <div className="pizza-item">
-        <img width="300px" src={url} className="pizza-img" alt="pizza" />
+        <Link to={`/items/${id}`}>
+          <img width="300px" src={url} className="pizza-img" alt="pizza" />
+        </Link>
         <h4 className="pizza-title">{name}</h4>
         <div className="pizza-options-top">
           <ul className="pizza-option-one">

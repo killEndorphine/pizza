@@ -1,0 +1,47 @@
+.pizzaPage {
+  border: 1px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+  margin: 0 auto;
+  &__img {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+  }
+  &__header {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  &__types {
+    display: flex;
+    li {
+      padding: 5px;
+      border: 1px solid black;
+      margin: 1px;
+      list-style-type: none;
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: black;
+      }
+    }
+  }
+  &__sizes {
+    display: flex;
+    li {
+      padding: 5px;
+      border: 1px solid black;
+      margin: 1px;
+      list-style-type: none;
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: black;
+      }
+    }
+  }
+}

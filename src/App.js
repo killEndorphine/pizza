@@ -3,9 +3,9 @@ import Header from './components/Header'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import NotFound from './pages/NotFound/NotFound'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import PizzaPage from './pages/PizzaPage/PizzaPage'
 
-//import pizzas from './assets/pizzas.json'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/items/:id" element={<PizzaPage />} />
         </Routes>
       </div>
     </BrowserRouter>

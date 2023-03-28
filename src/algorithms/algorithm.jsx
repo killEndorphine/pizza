@@ -868,7 +868,7 @@ const Home = () => {
   )
 }
 
-//38 алгоритм 
+//38 алгоритм homeSliceSelector
 export const homeSliceSelector = (state) => state.homeSlice
 
 const Home = () => {
@@ -877,5 +877,37 @@ const Home = () => {
     const dispatch = useDispatch()
     return (
       <div>...</div>
+    )
+}
+
+//39 useLocation
+function Header() {
+  const location = useLocation()
+  return (
+    <div>
+      {location.path !== '/abc' ? <div>123</div> : null}
+    </div>
+  )
+}
+
+//40 useParams
+<Link to={`/items/${id}`}>
+  <img width="300px" src={url} className="pizza-img" alt="pizza" />
+</Link>
+
+<Route path="/items/:id" element={<PizzaPage />} />
+
+const PizzaPage = () => {
+  const { id } = useParams()
+
+  useEffect(() => {
+    dispatch(fetchItem(id))
+  }, [])
+
+  if (status === 'loading') {
+    return <PizzaItemSkeleton />
+  }
+  return (
+    <div>...</div>
   )
 }
