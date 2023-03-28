@@ -10,6 +10,8 @@ import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
 import { setActiveIndex, setSelected } from '../redux/Slices/filterSortSlice'
 
+import axios from 'axios'
+
 const Home = () => {
   const { searchValue } = React.useContext(SearchContext)
   let [items, setItems] = useState([])
@@ -38,14 +40,23 @@ const Home = () => {
     const search = searchValue ? `search=${searchValue}` : ''
 
     setIsLoading(true)
-    fetch(
-      `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
-    )
-      .then((res) => res.json())
-      .then((arr) => {
-        setItems(arr)
+    // fetch(
+    //   `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+    // )
+    //   .then((res) => res.json())
+    //   .then((arr) => {
+    //     setItems(arr)
+    //     setIsLoading(false)
+    //   })
+    axios
+      .get(
+        `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+      )
+      .then((res) => {
+        setItems(res.data)
         setIsLoading(false)
       })
+
     window.scrollTo(0, 0) // перевести вверх окно
   }, [
     filterSortSlice.activeIndex,

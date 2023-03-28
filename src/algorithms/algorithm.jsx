@@ -568,3 +568,26 @@ const setSortSelected = (obj) => {
   selected={filterSortSlice.selected}
   setSelected={setSortSelected}
 />
+
+
+//28 axios
+axios
+  .get(
+    `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+  )
+  .then((res) => {
+    setItems(res.data)
+    setIsLoading(false)
+})
+
+//29 ref
+const inputRef = useRef()
+
+const onClickClear = () => {
+  setSearchValue('')
+  inputRef.current.focus()
+}
+
+<input ref={inputRef} />
+
+<svg onClick={onClickClear}></svg>

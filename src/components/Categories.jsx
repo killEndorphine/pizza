@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 const Categories = ({ activeIndex, setActiveIndex }) => {
   const arr = ['Все', 'Мясные', 'Вегитарианские', 'Гриль', 'Закрытые']
   //const [activeIndex, setActiveIndex] = useState(0)

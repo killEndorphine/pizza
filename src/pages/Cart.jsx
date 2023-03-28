@@ -67,6 +67,7 @@ const Cart = () => {
       <div className="cart-items">
         <div className="cart-item">
           <img
+            alt="питса"
             className="cart-item-img"
             src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
           />
@@ -86,6 +87,7 @@ const Cart = () => {
 
         <div className="cart-item">
           <img
+            alt="питса"
             className="cart-item-img"
             src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
           />
@@ -105,6 +107,7 @@ const Cart = () => {
 
         <div className="cart-item">
           <img
+            alt="питса"
             className="cart-item-img"
             src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
           />
