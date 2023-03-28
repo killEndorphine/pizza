@@ -233,4 +233,19 @@ function App() {
 // <Link to="/">Ссылка на Home</Link>
 // <Link to="/card">Ссылка на Card</Link>
 
-// 11
+// 11 adaptation css + grid
+.pizza-items {
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+@media (max-width: 950px) {
+  .pizza-items {
+    grid-template-columns: repeat(3, 1fr);
+    // или какое другое св-во меняется
+  }
+}

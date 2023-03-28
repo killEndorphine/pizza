@@ -32,7 +32,7 @@ const Home = () => {
         <div className="pizza-items">
           {isLoading
             ? [...new Array(8)].map((_, index) => <PizzaSkeleton key={index} />)
-            : items.map((obj) => <PizzaItem key={obj.key} {...obj} />)}
+            : items.map((obj) => <PizzaItem key={obj.id} {...obj} />)}
         </div>
       </section>
     </main>
