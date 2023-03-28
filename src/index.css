@@ -248,8 +248,15 @@ body {
   text-decoration: none;
   justify-content: space-around;
   border: 1px solid black;
-  padding: 5px;
-  border-radius: 15px;
+
+  background-color: white;
+  padding: 5px 10px;
+}
+
+.pizza-item-add:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 .pizza-item-add-button {

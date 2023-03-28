@@ -1,0 +1,30 @@
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  &__header {
+    margin-bottom: 15px;
+  }
+  &_text {
+    margin-bottom: 5px;
+  }
+  &__svg {
+    height: 300px;
+  }
+  &__button {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    &:hover {
+      color: black;
+      background-color: white;
+      cursor: pointer;
+      border: 2px solid black;
+    }
+    &:active {
+      background-color: rgb(204, 202, 79);
+    }
+  }
+}

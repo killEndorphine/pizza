@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Cart from './pages/Cart'
 import NotFound from './pages/NotFound/NotFound'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import EmptyCart from './pages/EmptyCart/EmptyCart'
 
 //import pizzas from './assets/pizzas.json'
 export const SearchContext = React.createContext('')
