@@ -15,9 +15,11 @@ b) Categories
 c) Sort
 d) Popup
 e) PizzaItem
-f) Ставим много пицца итемов и wrap иж делаем(чтобы вниз итемы прыгали)
-9)
+f) Ставим много пицца итемов и wrap их делаем(чтобы вниз итемы прыгали)
+9) в итем пиццы передаем параметры при вызове - название и цена
+10) деструктуризируем пропс в итем пицце и передаем в нужные места параметры
+11)
 
-https://www.youtube.com/watch?v=HAMGGnF7en4&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=3
 
-time: 56:00
+https://www.youtube.com/watch?v=EXRqsxBNDzE&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=4
+time: 00:00

@@ -20,14 +20,14 @@ function App() {
             Все пиццы
           </h1>
           <div className="pizza-items">
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
-            <PizzaItem />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
+            <PizzaItem title="Мексиканская" price={500} />
           </div>
         </section>
       </main>

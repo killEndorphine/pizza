@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PizzaItem = () => {
+const PizzaItem = ({ title, price }) => {
   return (
     <div className="pizza-item">
       <img
@@ -9,7 +9,7 @@ const PizzaItem = () => {
         className="pizza-img"
         alt="pizza"
       />
-      <h4 className="pizza-title">Чизбургер-пицца</h4>
+      <h4 className="pizza-title">{title}</h4>
       <div className="pizza-options-top">
         <ul className="pizza-option-one">
           <li className="active">Тонкое</li>
@@ -22,7 +22,7 @@ const PizzaItem = () => {
         </ul>
       </div>
       <div className="pizza-option-bottom">
-        <span className="pizza-price">от 395 р</span>
+        <span className="pizza-price">от {price} р</span>
         <a className="pizza-item-add" href="#">
           <svg
             height="25px"
