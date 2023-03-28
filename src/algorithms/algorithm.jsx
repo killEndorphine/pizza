@@ -471,3 +471,53 @@ const Header = () => {
   return <div onClick={(e) => setSearchValue(e.target.value)}>{searchValue}</div>
 }
 
+//23 redux
+import { configureStore } from '@reduxjs/toolkit'
+import filterSlice from './Slices/filterSlice'
+
+export const store = configureStore({
+  reducer: {
+    filterSlice,
+  },
+})
+
+//23.1 provider
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
+
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+
+//24 slice
+import { createSlice } from '@reduxjs/toolkit'
+const initialState = {
+  activeIndex: 0,
+  selected: {
+    name: 'популярности(по убыванию)',
+    sortProperty: 'rating',
+  },
+}
+const filterSlice = createSlice({
+  name: 'filter',
+  initialState,
+  reducers: {
+    setActiveIndex(state, action) {
+      state.activeIndex = action.payload
+    },
+  },
+})
+export const { setActiveIndex } = filterSlice.actions
+export default filterSlice.reducer
+
+//25 Dispatch
+import { useDispatch, useSelector } from 'react-redux'
+import { setActiveIndex } from '../redux/Slices/filterSlice'
+const activeIndex = useSelector((state) => state.filterSlice.activeIndex)
+const dispatch = useDispatch()
+const setCategoryId = (id) => {
+  dispatch(setActiveIndex(id))
+}
+<Categories activeIndex={activeIndex} setActiveIndex={setCategoryId} />

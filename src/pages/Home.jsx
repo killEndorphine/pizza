@@ -5,7 +5,10 @@ import Sort from '../components/Sort'
 import PizzaItem from '../components/PizzaItem'
 import PizzaSkeleton from '../components/PizzaSkeleton'
 import Pagination from '../components/Pagination/Pagination'
+
 import { SearchContext } from '../App'
+import { useDispatch, useSelector } from 'react-redux'
+import { setActiveIndex } from '../redux/Slices/filterSlice'
 
 const Home = () => {
   const { searchValue } = React.useContext(SearchContext)
@@ -14,9 +17,12 @@ const Home = () => {
     name: 'популярности(по убыванию)',
     sortProperty: 'rating',
   })
-  const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
+  // const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
   const [isLoading, setIsLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+
+  const activeIndex = useSelector((state) => state.filterSlice.activeIndex)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const order = selected.sortProperty.includes('-') ? 'asc' : 'desc'
@@ -36,10 +42,14 @@ const Home = () => {
     window.scrollTo(0, 0) // перевести вверх окно
   }, [activeIndex, selected, searchValue, currentPage])
 
+  const setCategoryId = (id) => {
+    dispatch(setActiveIndex(id))
+  }
+
   return (
     <main className="main">
       <div className="sort">
-        <Categories activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+        <Categories activeIndex={activeIndex} setActiveIndex={setCategoryId} />
         <Sort selected={selected} setSelected={setSelected} />
       </div>
       <section className="section">
