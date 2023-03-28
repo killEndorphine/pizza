@@ -514,7 +514,7 @@ export default filterSlice.reducer
 
 //25 Dispatch
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveIndex } from '../redux/Slices/filterSortSlice'
+import { setActiveIndex } from '../redux/Slices/homeSlice'
 const activeIndex = useSelector((state) => state.filterSlice.activeIndex)
 const dispatch = useDispatch()
 const setCategoryId = (id) => {
@@ -548,7 +548,7 @@ export default filterSortSlice.reducer
 
 //27 Dispatch 2.0
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveIndex, setSelected } from '../redux/Slices/filterSortSlice'
+import { setActiveIndex, setSelected } from '../redux/Slices/homeSlice'
 const filterSortSlice = useSelector((state) => state.filterSortSlice)
 const dispatch = useDispatch()
 

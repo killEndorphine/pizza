@@ -257,6 +257,7 @@ const category = activeIndex > 0 ? `category=${activeIndex}` : '' - все пи�
 196) deboune отложим пока
 
 197) он вынес в фильтр слайс пагинацию - репорт нахуй!
+198) Все стейты переносим из хоум в хоум слайс
 
 
 
@@ -271,7 +272,6 @@ const category = activeIndex > 0 ? `category=${activeIndex}` : '' - все пи�
 
 
 
+https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
 
-https://www.youtube.com/watch?v=YAsKVCNqdy4&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=15
-
-time: 0:50:37
+time: 0:00:00

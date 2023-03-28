@@ -8,38 +8,40 @@ import Pagination from '../components/Pagination/Pagination'
 
 import { SearchContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
-import { setActiveIndex, setSelected } from '../redux/Slices/filterSortSlice'
+import {
+  setActiveIndex,
+  setSelected,
+  setItems,
+  setIsLoading,
+  setCurrentPage,
+} from '../redux/Slices/homeSlice'
 
 import axios from 'axios'
 
 const Home = () => {
   const { searchValue } = React.useContext(SearchContext)
-  let [items, setItems] = useState([])
+  //let [items, setItems] = useState([])
   // const [selected, setSelected] = useState({
   //   name: 'популярности(по убыванию)',
   //   sortProperty: 'rating',
   // })
   // const [activeIndex, setActiveIndex] = useState(0) // теперь они тут!
-  const [isLoading, setIsLoading] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  //const [isLoading, setIsLoading] = useState(false)
+  //const [currentPage, setCurrentPage] = useState(1)
 
   // const activeIndex = useSelector((state) => state.filterSortSlice.activeIndex)
   // const selected = useSelector((state) => state.filterSortSlice.selected)
-  const filterSortSlice = useSelector((state) => state.filterSortSlice) // так компактнее вроде...
+  const homeSlice = useSelector((state) => state.homeSlice) // так компактнее вроде...
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const order = filterSortSlice.selected.sortProperty.includes('-')
-      ? 'asc'
-      : 'desc'
-    const sortBy = filterSortSlice.selected.sortProperty.replace('-', '')
+    const order = homeSlice.selected.sortProperty.includes('-') ? 'asc' : 'desc'
+    const sortBy = homeSlice.selected.sortProperty.replace('-', '')
     const category =
-      filterSortSlice.activeIndex > 0
-        ? `category=${filterSortSlice.activeIndex}`
-        : ''
+      homeSlice.activeIndex > 0 ? `category=${homeSlice.activeIndex}` : ''
     const search = searchValue ? `search=${searchValue}` : ''
 
-    setIsLoading(true)
+    dispatch(setIsLoading(true))
     // fetch(
     //   `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
     // )
@@ -50,19 +52,19 @@ const Home = () => {
     //   })
     axios
       .get(
-        `https://63735446348e947299093a2b.mockapi.io/items?page=${currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
+        `https://63735446348e947299093a2b.mockapi.io/items?page=${homeSlice.currentPage}&limit=4&${category}${search}&sortBy=${sortBy}&order=${order}`
       )
       .then((res) => {
-        setItems(res.data)
-        setIsLoading(false)
+        dispatch(setItems(res.data))
+        dispatch(setIsLoading(false))
       })
 
     window.scrollTo(0, 0) // перевести вверх окно
   }, [
-    filterSortSlice.activeIndex,
-    filterSortSlice.selected,
+    homeSlice.activeIndex,
+    homeSlice.selected,
     searchValue,
-    currentPage,
+    homeSlice.currentPage,
   ])
 
   const setCategoryId = (id) => {
@@ -77,24 +79,23 @@ const Home = () => {
     <main className="main">
       <div className="sort">
         <Categories
-          activeIndex={filterSortSlice.activeIndex}
+          activeIndex={homeSlice.activeIndex}
           setActiveIndex={setCategoryId}
         />
-        <Sort
-          selected={filterSortSlice.selected}
-          setSelected={setSortSelected}
-        />
+        <Sort selected={homeSlice.selected} setSelected={setSortSelected} />
       </div>
       <section className="section">
         <h1 style={{ marginBottom: '25px', textTransform: 'uppercase' }}>
           Все пиццы
         </h1>
         <div className="pizza-items">
-          {isLoading
+          {homeSlice.isLoading
             ? [...new Array(4)].map((_, index) => <PizzaSkeleton key={index} />)
-            : items.map((obj) => <PizzaItem key={obj.id} {...obj} />)}
+            : homeSlice.items.map((obj) => <PizzaItem key={obj.id} {...obj} />)}
         </div>
-        <Pagination onChangePage={(number) => setCurrentPage(number)} />
+        <Pagination
+          onChangePage={(number) => dispatch(setCurrentPage(number))}
+        />
       </section>
     </main>
   )
